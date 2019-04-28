@@ -45,22 +45,24 @@ export default class App extends Component {
                 <button
                     className="toggle-planet btn btn-info btn-lg"
                     onClick={this.toggleRandomPlanet}
-                >Toggle Random Planet</button>
+                    >
+                    Toggle Random Planet</button>
 
                 <PeoplePage/>
 
-                <div className="row mt2">
-                    <div className="col-md-6">
-                        <ItemList
-                            onItemSelected={this.onPersonSelected}
-                            getData={this.swapiService.getAllPlanets}
-                            renderItem={(item) => item.id}
-                        />
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={this.state.selectedPerson}/>
-                    </div>
-                </div>
+                {/*<div className="row mt2">*/}
+                {/*    <div className="col-md-6">*/}
+                {/*        <ItemList*/}
+                {/*            onItemSelected={this.onPersonSelected}*/}
+                {/*            getData={this.swapiService.getAllPlanets}*/}
+                {/*            renderItem={(item) => item.id}*/}
+                {/*        />*/}
+                {/*    </div>*/}
+                {/*    <div className="col-md-6">*/}
+                {/*        <PersonDetails personId={this.state.selectedPerson}/>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+
             </div>
         );
     };

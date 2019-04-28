@@ -28,19 +28,31 @@ export default class PeoplePage extends Component {
         if(this.state.hasError){
             return console.log('error!!!')
         }
+        const itemList = (
+            <ItemList
+                onItemSelected={this.onPersonSelected}
+                getData={this.swapiService.getAllPeople}
+                renderItem={({name, gender}) => `${name} (${gender})`}
+            />
+        );
+        const personDetails = (
+            <PersonDetails personId={this.state.selectedPerson}/>
+        )
         return (
-            <div className="row mb2">
-                <div className="col-md-6">
-                    <ItemList
-                        onItemSelected={this.onPersonSelected}
-                        getData={this.swapiService.getAllPeople}
-                        renderItem={({name, gender}) => `${name} (${gender})`}
-                    />
-                </div>
-                <div className="col-md-6">
-                    <PersonDetails personId={this.state.selectedPerson}/>
-                </div>
-            </div>
+            <Row left={itemList} rigth={personDetails}/>
         )
     }
-}
+};
+
+const Row = (props) => {
+    return (
+        <div className="row mb2">
+            <div className="col-md-6">
+                { props.left }
+            </div>
+            <div className="col-md-6">
+                { props.rigth }
+            </div>
+        </div>
+        )
+};
