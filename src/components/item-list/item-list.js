@@ -26,7 +26,7 @@ export default class ItemList extends Component {
                     peopleList
                 })
             })
-            .catch(console.log('DAS'))
+
 
     }
 
@@ -46,7 +46,6 @@ export default class ItemList extends Component {
 
     render() {
     const { peopleList } = this.state;
-        console.log(peopleList);
         const items = this.renderItems(Array.from(peopleList));
     if(!peopleList){
         return <Spinner/>
