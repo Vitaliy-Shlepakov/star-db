@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import PeoplePage from '../people-page';
+
 
 import './app.css';
 
@@ -11,23 +11,27 @@ export default class App extends Component {
 
     state= {
         showRandomPlanet: true,
-        selectedPerson: 2
+        hasError: false
     };
 
     toggleRandomPlanet = () => {
         this.setState({
             showRandomPlanet: true
         })
-    }
+    };
 
-    onPersonSelected = (id) => {
+    componentDidCatch(error, errorInfo) {
         this.setState({
-            selectedPerson: id
-        })
+            hasError: true
+        });
     };
 
 
     render() {
+
+        if(this.state.hasError) {
+            return alert('Something has gone terribly! Update page!')
+        }
         return (
             <div className="stardb-app">
                 <Header />
@@ -38,14 +42,7 @@ export default class App extends Component {
                     onClick={this.toggleRandomPlanet}
                 >Toggle Random Planet</button>
 
-                <div className="row mb2">
-                    <div className="col-md-6">
-                        <ItemList onItemSelected={this.onPersonSelected}/>
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={this.state.selectedPerson}/>
-                    </div>
-                </div>
+                <PeoplePage/>
             </div>
         );
     };
