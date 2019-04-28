@@ -6,8 +6,13 @@ import PeoplePage from '../people-page';
 
 
 import './app.css';
+import ItemList from "../item-list";
+import PersonDetails from "../person-details";
+import SwapiService from '../../services/swapi-service';
 
 export default class App extends Component {
+
+    swapiService = new SwapiService();
 
     state= {
         showRandomPlanet: true,
@@ -43,6 +48,19 @@ export default class App extends Component {
                 >Toggle Random Planet</button>
 
                 <PeoplePage/>
+
+                <div className="row mt2">
+                    <div className="col-md-6">
+                        <ItemList
+                            onItemSelected={this.onPersonSelected}
+                            getData={this.swapiService.getAllPlanets}
+                            renderItem={(item) => item.id}
+                        />
+                    </div>
+                    <div className="col-md-6">
+                        <PersonDetails personId={this.state.selectedPerson}/>
+                    </div>
+                </div>
             </div>
         );
     };
