@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 
 import Header from '../header';
+import Row from '../row';
 import RandomPlanet from '../random-planet';
 import PeoplePage from '../people-page';
-import Row from '../row';
 
 
 import './app.css';
-import ItemList from "../item-list";
-import ItemDetails from "../item-details";
+import ItemDetails, { Record } from "../item-details/item-details";
 import SwapiService from '../../services/swapi-service';
 
 export default class App extends Component {
@@ -38,26 +37,35 @@ export default class App extends Component {
             <ItemDetails
                 itemId={11}
                 getData={getPerson}
-                getImageUrl={getPersonImage}
-            />
+                getImageUrl={getPersonImage}>
+
+                <Record field = "gender" label="Geder"/>
+                <Record field = "eyeColor" label="Eye Color"/>
+
+            </ItemDetails>
         );
         const starshipDetails = (
             <ItemDetails itemId={11}
                 getData={getStarship}
-                getImageUrl={getStarshipImage}
-            />
+                getImageUrl={getStarshipImage}>
+
+                <Record field = "model" label="model"/>
+                <Record field = "length" label="length"/>
+                <Record field = "costInCredits" label="Cost"/>
+
+            </ItemDetails>
         );
 
         return (
             <div className="stardb-app">
                 <Header />
                 {/*<RandomPlanet />*/}
-                {/*<PeoplePage/>*/}
+                <PeoplePage/>
 
-                <Row
-                    left={personDetails}
-                    rigth={starshipDetails}>
-                </Row>
+                {/*<Row*/}
+                {/*    left={personDetails}*/}
+                {/*    rigth={starshipDetails}>*/}
+                {/*</Row>*/}
 
             </div>
         );
