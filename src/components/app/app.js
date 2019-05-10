@@ -68,22 +68,15 @@ export default class App extends Component {
             <div className="stardb-app">
                 <Header />
 
-                <PersoneList>
-                    { ({name}) => <span>{name}</span> }
-                </PersoneList>
+                <PersoneList/>
 
-                <PlanetList>
-                    { ({name}) => <span>{name}</span> }
-                </PlanetList>
+                <PlanetList/>
 
-                    <StarshipList>
-                        { ({name}) => <span>{name}</span> }
-                    </StarshipList>
+                <StarshipList/>
 
                 <PersoneDetails itemId={11}/>
                 <PlanetDetails itemId={5}/>
                 <StarshipDetails itemId={2}/>
-
             </div>
         );
     };
